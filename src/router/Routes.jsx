@@ -4,6 +4,8 @@ import Root from '../layout/Root';
 import Homepage from '../pages/HomePage/Homepage';
 import TimeLine from '../pages/Timeline/TimeLine';
 import Status from '../pages/Status/Status';
+import FriendDetails from '../pages/friendDetails/FriendDetails';
+
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +13,10 @@ export const router = createBrowserRouter([
     Component : Root,
     children : [
         {index : true, Component : Homepage},
+        {
+            path : '/:id',
+            Component : FriendDetails
+        },
         {
             path : '/timeline',
             Component : TimeLine

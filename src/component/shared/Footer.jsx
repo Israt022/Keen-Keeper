@@ -26,7 +26,8 @@ const Footer = () => {
                 </a>
                 </div>
             </nav>
-            <div className='flex flex-col lg:flex-row justify-between w-full items-center mt-5'>
+            <hr  className='text-white/10 mt-3 w-full'/>
+            <div className='flex flex-col lg:flex-row justify-between w-full items-center'>
                 <p className='text-white/80 text-sm'>© 2026 KeenKeeper. All rights reserved.</p>
                 <ul className='text-white/80 flex flex-wrap gap-3 '>
                     <li>
