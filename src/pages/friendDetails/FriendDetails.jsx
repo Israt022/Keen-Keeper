@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router';
 import useFriend from '../../hooks/useFriend';
 import { FadeLoader } from 'react-spinners';
@@ -6,18 +6,35 @@ import { RiDeleteBinLine, RiNotificationSnoozeLine } from 'react-icons/ri';
 import { PiArchive } from 'react-icons/pi';
 import { LuPhoneCall, LuVideo } from 'react-icons/lu';
 import { MdOutlineTextsms } from 'react-icons/md';
+import { friendsContext } from '../../context/FriendsProvider';
+import { toast } from 'react-toastify';
 
 const FriendDetails = () => {
     const {id} = useParams();
     const {friends,loading} = useFriend()
     const filterData = friends.find(friend => String(friend.id) === id)
     console.log(filterData);
+    const {call,setCall,texts,setTexts,videos,setVideos} = useContext(friendsContext)
     if(loading){
         return(
         <div className='flex justify-center items-center mx-auto'>
             <FadeLoader color='#244D3F'/>
         </div>
         )
+    }
+    
+    console.log(call,setCall);
+    const handleCall= () => {
+        setCall([...call, { ...filterData, type: "call" }])
+        toast.success(`Call with ${filterData.name}`)
+    }
+    const handleText= () => {
+        setTexts([...texts, { ...filterData, type: "text" }])
+        toast.success(`Text with ${filterData.name}`)
+    }
+    const handleVideo= () => {
+        setVideos([...videos, { ...filterData, type: "video" }])
+        toast.success(`Video with ${filterData.name}`)
     }
     if(!filterData){
         return <p>No data</p>
@@ -109,7 +126,7 @@ const FriendDetails = () => {
                     {/* Functionality Div */}
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                         {/* div 1 */}
-                        <div className='p-4 flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
+                        <div onClick={handleCall} className='p-4 cursor-pointer flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
                             <h1>
                                 <LuPhoneCall size={30}/>
                             </h1>
@@ -118,7 +135,7 @@ const FriendDetails = () => {
                             </p>
                         </div>
                         {/* div 2 */}
-                        <div className='p-4 flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
+                        <div onClick={handleText} className='p-4 cursor-pointer flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
                             <h1>
                                 <MdOutlineTextsms size={30}/>
                             </h1>
@@ -127,7 +144,7 @@ const FriendDetails = () => {
                             </p>
                         </div>
                         {/* div 3 */}
-                        <div className='p-4 flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
+                        <div onClick={handleVideo} className='p-4 cursor-pointer flex flex-col bg-[#E9E9E9] rounded-md space-y-2 justify-center items-center hover:scale-105 transition-transform delay-100'>
                             <h1>
                                 <LuVideo size={30}/>
                             </h1>
