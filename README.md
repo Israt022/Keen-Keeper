@@ -1,16 +1,86 @@
-# React + Vite
+# <h1 align="center"><span style="background: linear-gradient(90deg,#065f46,#10b981,#065f46); -webkit-background-clip: text; color: transparent; animation: glow 4s infinite;">🌿 KeenKeeper — Friendship Tracker</span></h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+A modern web application to help you maintain meaningful friendships by tracking interactions, setting relationship goals, and reminding you when it's time to reconnect.
+</p>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📖 Project Description
 
-## React Compiler
+**KeenKeeper** is a friendship management web application where users can track their interactions with friends such as **calls, texts, and video chats**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The app helps users maintain stronger relationships by:
 
-## Expanding the ESLint configuration
+* Tracking how long it has been since the last contact
+* Logging new interactions
+* Showing analytics of communication patterns
+* Providing reminders based on personal relationship goals
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Live Demo
+
+🔗 https://keen-keeper-nu.vercel.app/
+
+
+---
+
+## 🛠 Technologies Used
+
+| Technology                   | Purpose                       |
+| ---------------------------- | ----------------------------- |
+| **React.js**                 | Build the user interface      |
+| **React Router DOM**         | Page navigation               |
+| **Tailwind CSS**             | Styling and responsive design |
+| **React Icons**              | UI icons                      |
+| **Recharts**                 | Friendship analytics chart    |
+| **React-Toastify** | Toast notifications           |
+
+---
+
+## ⭐ Key Features
+
+### 👫 Friend Management
+
+* Displays a list of friends from a **JSON data source**
+* Each friend card shows:
+
+  * Profile photo
+  * Name
+  * Days since last contact
+  * Tags
+  * Status indicator
+
+### 📜 Timeline History
+
+All interactions are recorded and displayed in a **timeline page**.
+
+Each entry shows:
+
+* Interaction date
+* Interaction icon
+* Title such as:
+
+  * *Call with Alex*
+  * *Text with Sarah*
+
+### 📊 Friendship Analytics
+
+A dedicated **Stats Page** displays a **Pie Chart** showing the distribution of:
+
+* Calls
+* Text messages
+* Video chats
+
+---
+
+## 👩‍💻 Author
+
+Developed by **Israt Jahan**
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!

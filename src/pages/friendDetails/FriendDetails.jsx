@@ -36,9 +36,9 @@ const FriendDetails = () => {
         setVideos([...videos, { ...filterData, type: "video" }])
         toast.success(`Video with ${filterData.name}`)
     }
-    if(!filterData){
-        return <p>No data</p>
-    }
+    // if(!filterData){
+    //     return <p>No data</p>
+    // }
     return (
         <div className="container w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10 ">
             {/* Left Side  */}
