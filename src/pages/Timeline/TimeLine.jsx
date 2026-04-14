@@ -8,9 +8,11 @@ const TimeLine = () => {
     const {call,texts,videos} = useContext(friendsContext);
     const allData = [...call,...texts,...videos]
     
-    const sortData = allData.sort((a,b)=> b.time - a.time)
+    // const sortData = allData.sort((a,b)=> b.time - a.time)
 
     const [filter,setFilter] = useState('all')
+    const [search, setSearch] = useState("");
+    const [sortOrder, setSortOrder] = useState("newest");
 
     const handleFilter = (type) =>{
         setFilter(type);
@@ -20,10 +22,19 @@ const TimeLine = () => {
             dropdownRef.current.open = false;
         }
     }
+    const sortData = [...allData].sort((a, b) =>
+        sortOrder === "newest"
+            ? b.time - a.time
+            : a.time - b.time
+        );
     const filterData = 
         filter === 'all' 
         ? sortData
-        : sortData.filter(item => item.type === filter)
+        : sortData.filter(item => item.type === filter
+        )
+        .filter(item =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+        );
 
     const dropdownRef = useRef()
     return (
@@ -31,17 +42,38 @@ const TimeLine = () => {
             <h1 className='text-3xl font-bold my-2'>
                 Timeline 
             </h1>
-            <details ref={dropdownRef} className="dropdown">
-                <summary className="btn m-1 capitalize">
-                    {filter === 'all' ? 'Filter Timeline' : filter}
-                </summary>
-                <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <li onClick={()=> handleFilter("all")}><a>All</a></li>
-                    <li onClick={()=> handleFilter('text')}><a>Text</a></li>
-                    <li onClick={()=> handleFilter('call')}><a>Call</a></li>
-                    <li onClick={()=> handleFilter('video')}><a>Video</a></li>
-                </ul>
-            </details>
+            <div className="flex flex-wrap items-center gap-3 my-4 justify-between">
+                {/* Filter */}
+                <details ref={dropdownRef} className="dropdown">
+                    <summary className="btn m-1 capitalize">
+                        {filter === 'all' ? 'Filter Timeline' : filter}
+                    </summary>
+                    <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li onClick={()=> handleFilter("all")}><a>All</a></li>
+                        <li onClick={()=> handleFilter('text')}><a>Text</a></li>
+                        <li onClick={()=> handleFilter('call')}><a>Call</a></li>
+                        <li onClick={()=> handleFilter('video')}><a>Video</a></li>
+                    </ul>
+                </details>
+                {/* Sort */}
+                <select
+                    className="select select-bordered"
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value)}
+                >
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+                {/* Search */}
+                <input
+                    type="text"
+                    placeholder="Search by name..."
+                    className="input input-bordered w-52"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
+
             <div className='space-y-3 my-5'>
                 {
                     filterData.length == 0 ? 
