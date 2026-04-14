@@ -1,4 +1,6 @@
-# <h1 align="center"><span style="background: linear-gradient(90deg,#065f46,#10b981,#065f46); -webkit-background-clip: text; color: transparent; animation: glow 4s infinite;">🌿 KeenKeeper — Friendship Tracker</span></h1>
+<h1 align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:065f46,100:10b981&height=120&section=header&text=🌿KeenKeeper&fontSize=40&fontColor=ffffff"/>
+</h1>
 
 <p align="center">
 A modern web application to help you maintain meaningful friendships by tracking interactions, setting relationship goals, and reminding you when it's time to reconnect.
